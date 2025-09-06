@@ -91,10 +91,10 @@ class GreeterServiceStub(GreeterService):
         self._say_hello = client.unary(interface=self.sayHello)
         # Override with custom configuration
         self._say_many = client.unary(
-            interface=self.sayManyHello,
-            params_types=[str, int, str],
-            return_type=tuple[str, int, str],
-            codec="json"
+            method_name="listUsers",
+            params_types=[UserRequest],
+            return_type=UserListResponse,
+            codec="json",
         )
 ```
 
@@ -118,7 +118,7 @@ class GreeterServiceStub:
 
 | PR Number | Title | Status | Description |
 |-----------|-------|--------|-------------|
-| TBD | JSON Serializer Implementation | Ready to Merge | Complete JSON serialization with multi-layer strategy |
+| [#51](https://github.com/apache/dubbo-python/pull/51)  | JSON Serializer Implementation | Ready to Merge | Complete JSON serialization with multi-layer strategy |
 | [#51](https://github.com/apache/dubbo-python/pull/51) | Protobuf Serializer Implementation | Under Review | Full Protobuf support for RPC communication |
 
 ### Additional Contributions
